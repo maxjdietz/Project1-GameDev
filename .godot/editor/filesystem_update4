@@ -1,0 +1,9 @@
+res://Changes_Player/player.tscn
+res://characters/happy_boo/happy_boo.tscn
+res://Changes_Player/game.tscn
+res://Changes_Player/pinetree.tscn
+res://Changes_Player/SlimeGuy.tscn
+res://Changes_Player/gun.tscn
+res://Changes_Player/bullet.tscn
+res://characters/slime/slime.tscn
+res://Changes_Player/gun.gd

@@ -2,10 +2,21 @@ extends Area2D
 
 
 func _physics_process(delta):
+	look_at(get_global_mouse_position())
+	rotation_degrees += 0 # Adds a 90-degree offset
 	var enemies_in_range = get_overlapping_bodies()
 	if enemies_in_range.size() > 0:
 		var target_enemy = enemies_in_range[0]
-		look_at(target_enemy.global_position)
+	if Input.is_action_just_pressed("shoot"):
+		print("TEST")
+		if (%Timer.time_left > 0):
+			print("RELOADING!")
+			
+		else:
+			print("SHOOT")
+			shoot()
+		
+		
 
 func shoot():
 	
@@ -14,7 +25,8 @@ func shoot():
 	new_bullet.global_position = %ShootingPoint.global_position
 	new_bullet.global_rotation = %ShootingPoint.global_rotation
 	%ShootingPoint.add_child(new_bullet)
+	%Timer.start()
 
 
 func _on_timer_timeout() -> void:
-	shoot()
+	pass
