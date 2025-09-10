@@ -30,3 +30,8 @@ func shoot():
 
 func _on_timer_timeout() -> void:
 	pass
+
+
+func _on_player_upgrade_gun() -> void:
+	var timer_time = %Timer.wait_time
+	%Timer.wait_time = timer_time/2

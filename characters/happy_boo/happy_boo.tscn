@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://pbmyh1qru7p"]
+[gd_scene load_steps=13 format=3 uid="uid://pbmyh1qru7p"]
 
 [ext_resource type="Script" uid="uid://cagfw5twadwat" path="res://characters/happy_boo/happy_boo.gd" id="1_kg7lb"]
 [ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="2_62bos"]
@@ -573,10 +573,39 @@ tracks/13/keys = {
 "values": [-0.0250386, -0.209487, 0.0372028, 0.23927]
 }
 
+[sub_resource type="Animation" id="Animation_2wjx3"]
+resource_name = "ouch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Colorizer/SquareBody:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1.73067, -36.6061), Vector2(-1.731, -45.606), Vector2(-1.73067, -36.6061)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Colorizer/SquareBody:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.13, 0.33, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.240855, -0.202458, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wrcpu"]
 _data = {
 &"RESET": SubResource("Animation_hed62"),
 &"idle": SubResource("Animation_sablf"),
+&"ouch": SubResource("Animation_2wjx3"),
 &"walk": SubResource("Animation_74kqe")
 }
 

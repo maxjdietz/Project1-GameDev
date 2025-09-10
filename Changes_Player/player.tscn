@@ -37,7 +37,9 @@ shape = SubResource("CircleShape2D_g4wrc")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Gun" parent="." instance=ExtResource("3_vlwyt")]
+unique_name_in_owner = true
 position = Vector2(-1, -22)
+rotation = 0.0703841
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -49,7 +51,7 @@ position = Vector2(0, -18)
 shape = SubResource("CircleShape2D_vlwyt")
 debug_color = Color(0.799512, 0.380321, 0.484245, 0.42)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 offset_left = -89.0
 offset_top = -142.0
@@ -59,3 +61,5 @@ theme_override_styles/background = SubResource("StyleBoxFlat_vlwyt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_uaf6k")
 value = 100.0
 show_percentage = false
+
+[connection signal="upgradeGun" from="." to="Gun" method="_on_player_upgrade_gun"]

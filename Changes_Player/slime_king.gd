@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 1
+var health = 10
 var slimeSpeed := 300
 
 
@@ -17,9 +17,9 @@ func _physics_process(delta):
 
 signal kill_for_xp
 
-func increase_speed(speed):
-	slimeSpeed = speed
-	
+#func increase_speed(speed):
+	#slimeSpeed = speed
+	#print(speed)
 
 func take_damage():
 	health -= 1

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cy15446xfgwq5"]
+[gd_scene load_steps=6 format=3 uid="uid://cy15446xfgwq5"]
 
 [ext_resource type="Script" uid="uid://dmdx1aamkixdd" path="res://Changes_Player/game.gd" id="1_ev7e4"]
 [ext_resource type="PackedScene" uid="uid://caynm05p7b7ju" path="res://Changes_Player/player.tscn" id="1_qyihw"]
 [ext_resource type="PackedScene" uid="uid://mbgufdxb01a5" path="res://Changes_Player/pinetree.tscn" id="2_m5gmw"]
+[ext_resource type="PackedScene" uid="uid://brc76bfutnp5e" path="res://Changes_Player/LevelUpbar.tscn" id="4_ev7e4"]
 
 [sub_resource type="Curve2D" id="Curve2D_d0162"]
 _data = {
@@ -14,12 +15,22 @@ point_count = 6
 y_sort_enabled = true
 script = ExtResource("1_ev7e4")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasBG" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasBG"]
 offset_right = 1980.0
 offset_bottom = 1125.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="LevelUpbar" parent="UI" instance=ExtResource("4_ev7e4")]
+unique_name_in_owner = true
+offset_left = 1705.0
+offset_top = 38.0
+offset_right = -16.0
+offset_bottom = -943.0
 
 [node name="Player" parent="." instance=ExtResource("1_qyihw")]
 position = Vector2(810, 638)
@@ -89,5 +100,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 196
 text = "GAME OVER!"
 
+[connection signal="levelUp" from="UI/LevelUpbar" to="." method="_on_level_upbar_level_up"]
+[connection signal="levelUp" from="UI/LevelUpbar" to="Player" method="_on_level_upbar_level_up"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

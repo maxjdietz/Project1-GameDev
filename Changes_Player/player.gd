@@ -1,15 +1,18 @@
 extends CharacterBody2D
 
 var health = 100.0
-const DAMAGE_RATE = 20.0
+var DAMAGE_RATE = 20.0
 
 signal health_depleted
+signal upgradeGun
+var speed := 600
+
 
 
 func _physics_process(delta):
 	var direction = Input.get_vector("move_left", "move_right", 
 	"move_up", "move_down")
-	velocity = direction * 600
+	velocity = direction * speed
 	move_and_slide()
 	
 	if velocity.length() > 0.0:
@@ -22,8 +25,14 @@ func _physics_process(delta):
 	if overlapping_mobs.size() > 0:
 		print("TESTING")
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
-		%ProgressBar.value = health
+		%HealthBar.value = health
+		%HappyBoo.play_ouch_animation()
 		if health <= 0.0:
 			print("TESTING")
 			health_depleted.emit()
 			
+
+
+func _on_level_upbar_level_up() -> void:
+	speed += 100
+	upgradeGun.emit()
