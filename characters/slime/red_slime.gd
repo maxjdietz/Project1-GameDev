@@ -1,14 +1,13 @@
 extends CharacterBody2D
 
-var health = 1
+var health = 2
 var slimeSpeed := 300
 
 
 @onready var player = get_node("/root/Game/Player")
 
 func _ready():
-	%Slime.play_walk()
-	
+	%redSlime.play_walk()
 func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
 	
@@ -29,7 +28,7 @@ func take_damage():
 		kill_for_xp.emit()
 		queue_free()
 		
-	%Slime.play_hurt()
+	%redSlime.play_hurt()
 	const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
 	var smoke = SMOKE_SCENE.instantiate()
 	get_parent().add_child(smoke)

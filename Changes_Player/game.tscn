@@ -33,7 +33,7 @@ offset_right = -16.0
 offset_bottom = -943.0
 
 [node name="Player" parent="." instance=ExtResource("1_qyihw")]
-position = Vector2(810, 638)
+position = Vector2(805, 694)
 
 [node name="Path2D" type="Path2D" parent="Player"]
 position = Vector2(-810, -638)
@@ -100,6 +100,17 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 196
 text = "GAME OVER!"
 
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 746.0
+offset_top = 509.0
+offset_right = 817.0
+offset_bottom = 532.0
+scale = Vector2(1.66875, 1.66875)
+theme_override_colors/font_color = Color(0, 0.5314, 0, 1)
+text = "Level Up!"
+
+[connection signal="levelUpText" from="." to="Player" method="textpopup"]
 [connection signal="levelUp" from="UI/LevelUpbar" to="." method="_on_level_upbar_level_up"]
 [connection signal="levelUp" from="UI/LevelUpbar" to="Player" method="_on_level_upbar_level_up"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]

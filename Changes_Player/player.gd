@@ -23,12 +23,12 @@ func _physics_process(delta):
 	
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
-		print("TESTING")
+		
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		%HealthBar.value = health
 		%HappyBoo.play_ouch_animation()
 		if health <= 0.0:
-			print("TESTING")
+			
 			health_depleted.emit()
 			
 
@@ -36,3 +36,15 @@ func _physics_process(delta):
 func _on_level_upbar_level_up() -> void:
 	speed += 100
 	upgradeGun.emit()
+
+
+func textpopup() -> void:
+	%LevelUpText.visible = true
+	%Timer.start()
+
+
+
+
+
+func _on_timer_timeout() -> void:
+	%LevelUpText.visible = false

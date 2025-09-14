@@ -62,4 +62,19 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_uaf6k")
 value = 100.0
 show_percentage = false
 
+[node name="LevelUpText" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -50.0
+offset_top = -180.0
+offset_right = 88.0
+offset_bottom = -134.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "Level up!"
+
+[node name="Timer" type="Timer" parent="LevelUpText"]
+unique_name_in_owner = true
+
 [connection signal="upgradeGun" from="." to="Gun" method="_on_player_upgrade_gun"]
+[connection signal="timeout" from="LevelUpText/Timer" to="." method="_on_timer_timeout"]
