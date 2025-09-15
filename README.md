@@ -1,3 +1,5 @@
+///------------------------------PROJECT 1-----------------------------------///
+
 Finished Tutorial on Friday - will be adding new mechanics
 -1st commit
 
@@ -30,4 +32,8 @@ Each lvl++ increase slime speed, player speed, decrases reload time.
 +Added enemies lef to kill for that round
 +Added more text elements, not yet to be programmed
 +1  git push
+
+9/14
++added better spawn system
++Added button to continue with the next round (this is where the shop will be)
 +
