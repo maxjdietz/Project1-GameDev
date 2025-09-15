@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy15446xfgwq5"]
+[gd_scene load_steps=7 format=3 uid="uid://cy15446xfgwq5"]
 
 [ext_resource type="Script" uid="uid://dmdx1aamkixdd" path="res://Changes_Player/game.gd" id="1_ev7e4"]
 [ext_resource type="PackedScene" uid="uid://caynm05p7b7ju" path="res://Changes_Player/player.tscn" id="1_qyihw"]
 [ext_resource type="PackedScene" uid="uid://mbgufdxb01a5" path="res://Changes_Player/pinetree.tscn" id="2_m5gmw"]
+[ext_resource type="Script" uid="uid://ctilb7loxlchb" path="res://Changes_Player/num_of_enemies.gd" id="3_d0162"]
 [ext_resource type="PackedScene" uid="uid://brc76bfutnp5e" path="res://Changes_Player/LevelUpbar.tscn" id="4_ev7e4"]
 
 [sub_resource type="Curve2D" id="Curve2D_d0162"]
@@ -19,21 +20,54 @@ script = ExtResource("1_ev7e4")
 layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasBG"]
-offset_right = 1980.0
-offset_bottom = 1125.0
+offset_left = -29.0
+offset_top = 7.0
+offset_right = 1951.0
+offset_bottom = 1132.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
 
 [node name="LevelUpbar" parent="UI" instance=ExtResource("4_ev7e4")]
 unique_name_in_owner = true
-offset_left = 1705.0
-offset_top = 38.0
-offset_right = -16.0
-offset_bottom = -943.0
+offset_left = 1662.0
+offset_top = 83.0
+offset_right = -59.0
+offset_bottom = -898.0
+
+[node name="Money" type="Label" parent="UI"]
+offset_left = 29.0
+offset_top = 1034.0
+offset_right = 384.0
+offset_bottom = 1175.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Money: 
+"
+
+[node name="NumOfEnemies" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 665.0
+offset_top = 24.0
+offset_right = 1305.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Number of enemies left:"
+script = ExtResource("3_d0162")
+
+[node name="Round" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 33.0
+offset_top = 975.0
+offset_right = 285.0
+offset_bottom = 1058.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Round:"
 
 [node name="Player" parent="." instance=ExtResource("1_qyihw")]
-position = Vector2(805, 694)
+position = Vector2(963, 558)
 
 [node name="Path2D" type="Path2D" parent="Player"]
 position = Vector2(-810, -638)
@@ -111,7 +145,9 @@ theme_override_colors/font_color = Color(0, 0.5314, 0, 1)
 text = "Level Up!"
 
 [connection signal="levelUpText" from="." to="Player" method="textpopup"]
+[connection signal="nextRound" from="." to="UI/NumOfEnemies" method="_on_game_next_round"]
 [connection signal="levelUp" from="UI/LevelUpbar" to="." method="_on_level_upbar_level_up"]
 [connection signal="levelUp" from="UI/LevelUpbar" to="Player" method="_on_level_upbar_level_up"]
+[connection signal="noEnemies" from="UI/NumOfEnemies" to="." method="_on_num_of_enemies_no_enemies"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

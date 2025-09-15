@@ -2,16 +2,36 @@ extends Node2D
 
 var slimeSpeed = 300
 var levelChecker = 1
+var currRound := 0
 
 signal levelUpText
 
 
 
+func randNum(to, fro):
+
+	var num = randf_range(to, fro)
+	print(num)
+	return num
+
 func _ready():
-	spawn_mob()
-	spawn_mob()
-	spawn_mob()
-	spawn_mob()
+	roundSystem(1)
+
+	
+	
+func roundSystem(round):
+	for i in range(3):
+		var randomNum = randNum(round, 15)
+		if randomNum > 10:
+			spawn_mob()
+		if randomNum > 12:
+			spawn_red()
+		if randomNum > 14:
+			spawn_king()
+			
+	
+	
+	
 	
 func spawn_red():
 	var red_guy = preload("res://Changes_Player/redSlime_Enemy.tscn").instantiate()
@@ -45,7 +65,8 @@ func spawn_mob():
 
 
 func _on_timer_timeout() -> void:
-	spawn_mob()
+	#spawn_mob()
+	pass
 
 
 func _on_player_health_depleted() -> void:
@@ -64,3 +85,14 @@ func _on_level_upbar_level_up() -> void:
 	levelUpText.emit()
 	spawn_king()
 	spawn_red()
+
+
+
+signal nextRound
+
+func _on_num_of_enemies_no_enemies() -> void:
+	currRound += 1
+	%Round.text = "Round" + str(currRound)
+	roundSystem(currRound)
+	print("round" + str(currRound))
+	nextRound.emit()

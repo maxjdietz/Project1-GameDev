@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var health = 100.0
-var DAMAGE_RATE = 20.0
+var DAMAGE_RATE = 50.0
 
 signal health_depleted
 signal upgradeGun
