@@ -10,7 +10,6 @@ func _process(delta):
 	%NumOfEnemies.text = "Enemies Left: " + str(numOfEnemy)
 	if (numOfEnemy == 0):
 		noEnemies.emit()
-		print("HMM")
 		
 		set_process(false)
 		

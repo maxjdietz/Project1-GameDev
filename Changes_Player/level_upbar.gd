@@ -15,11 +15,6 @@ func _process(delta):
 		levelNum += 1
 		%Label.text = "Level " + str(levelNum)
 		
-	
-	
-	
-	
-	
 func _ready():
 	%Label.text = "Level " + str(levelNum)
 	

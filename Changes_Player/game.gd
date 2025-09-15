@@ -6,6 +6,9 @@ var currRound := 0
 
 signal levelUpText
 
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout
+
 
 
 func randNum(to, fro):
@@ -15,12 +18,15 @@ func randNum(to, fro):
 	return num
 
 func _ready():
+	
+	%Round.text = "Round: 1" 
 	roundSystem(1)
 
 	
 	
 func roundSystem(round):
-	for i in range(3):
+	spawn_mob()
+	for i in range(4):
 		var randomNum = randNum(round, 15)
 		if randomNum > 10:
 			spawn_mob()
@@ -92,7 +98,13 @@ signal nextRound
 
 func _on_num_of_enemies_no_enemies() -> void:
 	currRound += 1
-	%Round.text = "Round" + str(currRound)
-	roundSystem(currRound)
+	%Round.text = "Round: " + str(currRound)
 	print("round" + str(currRound))
+	%ProceedButton.visible = true
+	
+
+
+func _on_button_pressed() -> void:
 	nextRound.emit()
+	roundSystem(currRound)
+	%ProceedButton.visible = false

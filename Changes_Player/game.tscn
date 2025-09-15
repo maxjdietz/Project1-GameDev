@@ -1,10 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cy15446xfgwq5"]
+[gd_scene load_steps=9 format=3 uid="uid://cy15446xfgwq5"]
 
 [ext_resource type="Script" uid="uid://dmdx1aamkixdd" path="res://Changes_Player/game.gd" id="1_ev7e4"]
 [ext_resource type="PackedScene" uid="uid://caynm05p7b7ju" path="res://Changes_Player/player.tscn" id="1_qyihw"]
 [ext_resource type="PackedScene" uid="uid://mbgufdxb01a5" path="res://Changes_Player/pinetree.tscn" id="2_m5gmw"]
 [ext_resource type="Script" uid="uid://ctilb7loxlchb" path="res://Changes_Player/num_of_enemies.gd" id="3_d0162"]
 [ext_resource type="PackedScene" uid="uid://brc76bfutnp5e" path="res://Changes_Player/LevelUpbar.tscn" id="4_ev7e4"]
+
+[sub_resource type="GDScript" id="GDScript_ev7e4"]
+script/source = "extends CanvasLayer
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0162"]
+bg_color = Color(0.295778, 0.675093, 0.617539, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_d0162"]
 _data = {
@@ -27,6 +34,7 @@ offset_bottom = 1132.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
+script = SubResource("GDScript_ev7e4")
 
 [node name="LevelUpbar" parent="UI" instance=ExtResource("4_ev7e4")]
 unique_name_in_owner = true
@@ -36,10 +44,10 @@ offset_right = -59.0
 offset_bottom = -898.0
 
 [node name="Money" type="Label" parent="UI"]
-offset_left = 29.0
-offset_top = 1034.0
-offset_right = 384.0
-offset_bottom = 1175.0
+offset_left = 37.0
+offset_top = 96.0
+offset_right = 392.0
+offset_bottom = 237.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "Money: 
@@ -58,13 +66,24 @@ script = ExtResource("3_d0162")
 
 [node name="Round" type="Label" parent="UI"]
 unique_name_in_owner = true
-offset_left = 33.0
-offset_top = 975.0
-offset_right = 285.0
-offset_bottom = 1058.0
+offset_left = 35.0
+offset_top = 30.0
+offset_right = 287.0
+offset_bottom = 113.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "Round:"
+
+[node name="ProceedButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+visible = false
+offset_left = 662.0
+offset_top = 923.0
+offset_right = 1274.0
+offset_bottom = 1049.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_d0162")
+text = "Proceed To Next Round!"
 
 [node name="Player" parent="." instance=ExtResource("1_qyihw")]
 position = Vector2(963, 558)
@@ -149,5 +168,6 @@ text = "Level Up!"
 [connection signal="levelUp" from="UI/LevelUpbar" to="." method="_on_level_upbar_level_up"]
 [connection signal="levelUp" from="UI/LevelUpbar" to="Player" method="_on_level_upbar_level_up"]
 [connection signal="noEnemies" from="UI/NumOfEnemies" to="." method="_on_num_of_enemies_no_enemies"]
+[connection signal="pressed" from="UI/ProceedButton" to="." method="_on_button_pressed"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
