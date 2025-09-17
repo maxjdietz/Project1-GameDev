@@ -34,12 +34,20 @@ Each lvl++ increase slime speed, player speed, decrases reload time.
 - 1 git push
 
 9/15
-+added better spawn system
-+Added button to continue with the next round (this is where the shop will be)
-+Made shop (not implemented)
+- added better spawn system
+- Added button to continue with the next round (this is where the shop will be)
+- Made shop (not implemented)
 
 9/16
-+implemented shop and first 2 upgrades
-+player can now grow in shop
-+bullets can not increase in size in shop
+- implemented shop and first 2 upgrades
+- player can now grow in shop
+- bullets can not increase in size in shop
+- Added fully working upgrades
+- Added coins
+- Added mobs dropping coins
+- Added collection pickup (2 Money per coin pickup
+- Upgrades cost money, which decreases money conunt if you have the right amount
+- Uprades include: increase size of player, increase size of bullets, and health gain!
+
+
 
