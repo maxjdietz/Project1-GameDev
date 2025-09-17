@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://caynm05p7b7ju"]
+[gd_scene load_steps=9 format=3 uid="uid://caynm05p7b7ju"]
 
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_8wi5p"]
 [ext_resource type="Script" uid="uid://dn6xj7dbeew4y" path="res://Changes_Player/player.gd" id="1_g4wrc"]
 [ext_resource type="PackedScene" uid="uid://dxp4dftbanddf" path="res://Changes_Player/gun.tscn" id="3_vlwyt"]
+[ext_resource type="PackedScene" uid="uid://0c5hh24gdp5" path="res://Changes_Player/bullet.tscn" id="4_uaf6k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4wrc"]
 radius = 47.0106
@@ -76,5 +77,10 @@ text = "Level up!"
 [node name="Timer" type="Timer" parent="LevelUpText"]
 unique_name_in_owner = true
 
+[node name="Bullet" parent="." instance=ExtResource("4_uaf6k")]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="upgradeBullet" from="." to="Gun" method="_on_player_upgrade_bullet"]
 [connection signal="upgradeGun" from="." to="Gun" method="_on_player_upgrade_gun"]
 [connection signal="timeout" from="LevelUpText/Timer" to="." method="_on_timer_timeout"]

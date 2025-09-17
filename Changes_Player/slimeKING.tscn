@@ -21,9 +21,9 @@ position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_g8bny")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -53.6667
-offset_top = -64.3333
-offset_right = 53.3333
-offset_bottom = -41.3333
+offset_left = -39.3333
+offset_top = -76.6667
+offset_right = 45.6667
+offset_bottom = -53.6667
 theme_override_colors/font_color = Color(1, 0.0588235, 0.14902, 1)
-text = "King Slime!!!!!!"
+text = "King Slime"

@@ -2,10 +2,14 @@ extends CharacterBody2D
 
 var health = 100.0
 var DAMAGE_RATE = 50.0
+var playerSize = 1
 
 signal health_depleted
 signal upgradeGun
+signal upgradeBullet(upgradeKind: int)
 var speed := 600
+
+@onready var player: CharacterBody2D = $"."
 
 
 
@@ -42,9 +46,18 @@ func textpopup() -> void:
 	%LevelUpText.visible = true
 	%Timer.start()
 
-
-
-
-
 func _on_timer_timeout() -> void:
 	%LevelUpText.visible = false
+
+
+func _on_ui_up_1() -> void:
+	print("UPGRADE")
+	upgradeBullet.emit(1)
+	print("UPGRADE")
+	
+
+
+func _on_ui_up_2() -> void:
+	print("Up2")
+	playerSize += 0.5
+	player.scale = Vector2(playerSize, playerSize)

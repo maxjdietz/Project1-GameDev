@@ -1,5 +1,8 @@
 extends Area2D
 
+var bulletSize = 1
+
+
 
 func _physics_process(delta):
 	look_at(get_global_mouse_position())
@@ -24,6 +27,9 @@ func shoot():
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = %ShootingPoint.global_position
 	new_bullet.global_rotation = %ShootingPoint.global_rotation
+	new_bullet.scale = Vector2(bulletSize, bulletSize)
+	
+	
 	%ShootingPoint.add_child(new_bullet)
 	%Timer.start()
 
@@ -35,3 +41,11 @@ func _on_timer_timeout() -> void:
 func _on_player_upgrade_gun() -> void:
 	var timer_time = %Timer.wait_time
 	%Timer.wait_time = timer_time/2
+	
+		
+		
+
+
+func _on_player_upgrade_bullet(upgradeKind: int) -> void:
+	print("YESS")
+	bulletSize += 0.5

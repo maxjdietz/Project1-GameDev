@@ -102,7 +102,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_d0162")
 text = "Proceed To Next Round!"
 
 [node name="Shop" parent="UI" instance=ExtResource("4_2fjmb")]
-unique_name_in_owner = true
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -196,7 +195,6 @@ text = "Level Up!"
 [connection signal="levelUpText" from="." to="Player" method="textpopup"]
 [connection signal="nextRound" from="." to="UI/NumOfEnemies" method="_on_game_next_round"]
 [connection signal="up1" from="UI" to="Player" method="_on_ui_up_1"]
-[connection signal="up2" from="UI" to="Player" method="_on_ui_up_2"]
 [connection signal="levelUp" from="UI/LevelUpbar" to="." method="_on_level_upbar_level_up"]
 [connection signal="levelUp" from="UI/LevelUpbar" to="Player" method="_on_level_upbar_level_up"]
 [connection signal="noEnemies" from="UI/NumOfEnemies" to="." method="_on_num_of_enemies_no_enemies"]

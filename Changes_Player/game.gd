@@ -101,6 +101,7 @@ func _on_num_of_enemies_no_enemies() -> void:
 	%Round.text = "Round: " + str(currRound)
 	print("round" + str(currRound))
 	%ProceedButton.visible = true
+	%Shop.visible = true
 	
 
 
@@ -108,3 +109,4 @@ func _on_button_pressed() -> void:
 	nextRound.emit()
 	roundSystem(currRound)
 	%ProceedButton.visible = false
+	%Shop.visible = false
