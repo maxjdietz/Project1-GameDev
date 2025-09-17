@@ -53,7 +53,7 @@ theme_override_colors/font_color = Color(0.124673, 0.15222, 0.171449, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_2k80s")
-text = "Refill Health - $10"
+text = "Refill Health - $15"
 
 [connection signal="pressed" from="VBoxContainer/Upgrade1" to="." method="_on_upgrade_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/Upgrade2" to="." method="_on_upgrade_2_pressed"]

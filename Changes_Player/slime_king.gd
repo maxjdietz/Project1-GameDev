@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var health = 5
 var slimeSpeed := 300
+signal coinSpawn(position: Vector2)
 
 
 @onready var player = get_node("/root/Game/Player")
@@ -26,6 +27,7 @@ func take_damage():
 
 	if health == 0:
 		kill_for_xp.emit()
+		coinSpawn.emit(global_position)
 		queue_free()
 		
 	%Slime.play_hurt()

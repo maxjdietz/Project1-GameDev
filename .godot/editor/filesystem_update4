@@ -10,3 +10,11 @@ res://Changes_Player/bullet.gd
 res://Changes_Player/gun.gd
 res://Changes_Player/bullet.tscn
 res://Changes_Player/game.gd
+res://coin.tscn
+res://Changes_Player/coin.tscn
+res://Changes_Player/coin.gd
+res://Changes_Player/redSlime_Enemy.tscn
+res://characters/slime/red_slime.gd
+res://Changes_Player/SlimeGuy.tscn
+res://Changes_Player/slime_guy.gd
+res://Changes_Player/slime_king.gd

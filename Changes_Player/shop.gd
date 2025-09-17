@@ -9,6 +9,7 @@ signal upgrade_pressed(numOfUpgrade: int)
 
 
 func _on_upgrade_1_pressed() -> void:
+	
 	upgrade_pressed.emit(1)
 
 

@@ -61,3 +61,8 @@ func _on_ui_up_2() -> void:
 	print("Up2")
 	playerSize += 0.5
 	player.scale = Vector2(playerSize, playerSize)
+
+
+func _on_ui_up_3() -> void:
+	print("Upgrade3")
+	%HealthBar.value = 100

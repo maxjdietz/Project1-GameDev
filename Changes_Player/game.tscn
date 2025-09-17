@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cy15446xfgwq5"]
+[gd_scene load_steps=11 format=3 uid="uid://cy15446xfgwq5"]
 
 [ext_resource type="Script" uid="uid://dmdx1aamkixdd" path="res://Changes_Player/game.gd" id="1_ev7e4"]
 [ext_resource type="PackedScene" uid="uid://caynm05p7b7ju" path="res://Changes_Player/player.tscn" id="1_qyihw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ctilb7loxlchb" path="res://Changes_Player/num_of_enemies.gd" id="3_d0162"]
 [ext_resource type="PackedScene" uid="uid://cvvyn5x0o0r70" path="res://Changes_Player/shop.tscn" id="4_2fjmb"]
 [ext_resource type="PackedScene" uid="uid://brc76bfutnp5e" path="res://Changes_Player/LevelUpbar.tscn" id="4_ev7e4"]
+[ext_resource type="PackedScene" uid="uid://lbjbxyg3ekj8" path="res://Changes_Player/coin.tscn" id="7_37ltu"]
 
 [sub_resource type="GDScript" id="GDScript_ev7e4"]
 script/source = "extends CanvasLayer
@@ -13,17 +14,30 @@ script/source = "extends CanvasLayer
 signal up1
 signal up2
 signal up3
+var money := 0
+signal setMoney(amount: int)
 
 
 func _on_shop_upgrade_pressed(numOfUpgrade: int) -> void:
-	if numOfUpgrade == 1:
+	setMoney.emit(numOfUpgrade)
+		
+		
+
+#
+#func _on_coin_coin_got() -> void:
+	#print(\"COINGOT\")
+	#money += 2
+	#%Money.text = \"Money: \" + str(money)
+	
+
+
+func _on_game_good_upgrade(upgrade: int) -> void:
+	if upgrade == 1:
 		up1.emit()
-	elif numOfUpgrade == 2:
+	elif upgrade == 2:
 		up2.emit()
-	elif numOfUpgrade == 3:
+	elif upgrade == 3:
 		up3.emit()
-		
-		
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0162"]
@@ -60,6 +74,7 @@ offset_right = -59.0
 offset_bottom = -898.0
 
 [node name="Money" type="Label" parent="UI"]
+unique_name_in_owner = true
 offset_left = 37.0
 offset_top = 96.0
 offset_right = 392.0
@@ -193,10 +208,16 @@ scale = Vector2(1.66875, 1.66875)
 theme_override_colors/font_color = Color(0, 0.5314, 0, 1)
 text = "Level Up!"
 
+[node name="Coin" parent="." instance=ExtResource("7_37ltu")]
+visible = false
+
+[connection signal="goodUpgrade" from="." to="UI" method="_on_game_good_upgrade"]
 [connection signal="levelUpText" from="." to="Player" method="textpopup"]
 [connection signal="nextRound" from="." to="UI/NumOfEnemies" method="_on_game_next_round"]
+[connection signal="setMoney" from="UI" to="." method="_on_ui_set_money"]
 [connection signal="up1" from="UI" to="Player" method="_on_ui_up_1"]
 [connection signal="up2" from="UI" to="Player" method="_on_ui_up_2"]
+[connection signal="up3" from="UI" to="Player" method="_on_ui_up_3"]
 [connection signal="levelUp" from="UI/LevelUpbar" to="." method="_on_level_upbar_level_up"]
 [connection signal="levelUp" from="UI/LevelUpbar" to="Player" method="_on_level_upbar_level_up"]
 [connection signal="noEnemies" from="UI/NumOfEnemies" to="." method="_on_num_of_enemies_no_enemies"]
@@ -204,3 +225,4 @@ text = "Level Up!"
 [connection signal="upgrade_pressed" from="UI/Shop" to="UI" method="_on_shop_upgrade_pressed"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="coinGot" from="Coin" to="UI" method="_on_coin_coin_got"]
