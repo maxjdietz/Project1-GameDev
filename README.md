@@ -20,20 +20,26 @@ Each lvl++ increase slime speed, player speed, decrases reload time.
 
 
 9/10-9/13
-+ Added text icons for leveling up, and added text to "King Slime"
-+ Added new variant "red slime" (a little more powerful)
-+ added different spawn mechanics
-+ 2 git pushes
+- Added text icons for leveling up, and added text to "King Slime"
+- Added new variant "red slime" (a little more powerful)
+- added different spawn mechanics
+- 2 git pushes
 
 9/14
-+Added different spawn system Algorithm
-+Endless round system that progressively spawns more and more enemies
-+Added Round Number Text that updates after each set of enemies are killed
-+Added enemies lef to kill for that round
-+Added more text elements, not yet to be programmed
-+1  git push
+- Added different spawn system Algorithm
+- Endless round system that progressively spawns more and more enemies
+- Added Round Number Text that updates after each set of enemies are killed
+- Added enemies lef to kill for that round
+- Added more text elements, not yet to be programmed
+- 1 git push
 
-9/14
+9/15
 +added better spawn system
 +Added button to continue with the next round (this is where the shop will be)
-+
++Made shop (not implemented)
+
+9/16
++implemented shop and first 2 upgrades
++player can now grow in shop
++bullets can not increase in size in shop
+
