@@ -49,5 +49,14 @@ Each lvl++ increase slime speed, player speed, decrases reload time.
 - Upgrades cost money, which decreases money conunt if you have the right amount
 - Uprades include: increase size of player, increase size of bullets, and health gain!
 
+/////------------PROJECT 3----------------/////////////
+9/20-9/22
+-Added coin flip when dropped
+-Created red slimes to be smaller (will act as mines that instantly kill player)
+-Created "Soundtrack" (nt yet added)
+-Created Sound Effects (not yet added)
+-Changed UI slightly
+
+
 
 
