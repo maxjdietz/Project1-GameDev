@@ -236,6 +236,7 @@ offset = Vector2(0, -36)
 position = Vector2(0, -25)
 
 [node name="SlimeFace" type="Sprite2D" parent="Anchor/Face"]
+scale = Vector2(2.12, 2.12)
 texture = ExtResource("2_ygydt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

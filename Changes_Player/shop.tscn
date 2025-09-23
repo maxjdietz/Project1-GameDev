@@ -5,7 +5,11 @@
 [sub_resource type="Theme" id="Theme_od7pv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2k80s"]
-bg_color = Color(0.961243, 0.371297, 0.443279, 1)
+bg_color = Color(0.940283, 0.3248, 0.421184, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -29,17 +33,20 @@ offset_right = 132.8
 offset_bottom = 72.48
 scale = Vector2(0.5, 0.5)
 theme = SubResource("Theme_od7pv")
-theme_override_constants/separation = 12
+theme_override_constants/separation = 11
 
 [node name="Upgrade1" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.124673, 0.15222, 0.171449, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_2k80s")
 text = "Increase Bullet Size - $5"
 
 [node name="Upgrade2" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.124673, 0.15222, 0.171449, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -48,6 +55,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_2k80s")
 text = "Grow in Size! - $10"
 
 [node name="Upgrade3" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.124673, 0.15222, 0.171449, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)

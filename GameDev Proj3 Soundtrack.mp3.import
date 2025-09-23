@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://oe5ofppg23tx"
+path="res://.godot/imported/GameDev Proj3 Soundtrack.mp3-431bcb368e0b6bc0cbb20cf836dca1e4.mp3str"
+
+[deps]
+
+source_file="res://GameDev Proj3 Soundtrack.mp3"
+dest_files=["res://.godot/imported/GameDev Proj3 Soundtrack.mp3-431bcb368e0b6bc0cbb20cf836dca1e4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

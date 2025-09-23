@@ -1,0 +1,5 @@
+[folding]
+
+node_unfolds=[NodePath("."), PackedStringArray("Collision")]
+resource_unfolds=["res://Changes_Player/gun.tscn::CircleShape2D_el5ct", PackedStringArray()]
+nodes_folded=[]

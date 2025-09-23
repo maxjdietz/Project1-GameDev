@@ -107,26 +107,25 @@ text = "Round:"
 
 [node name="ProceedButton" type="Button" parent="UI"]
 unique_name_in_owner = true
-visible = false
-offset_left = 99.0
-offset_top = 661.0
-offset_right = 711.0
-offset_bottom = 787.0
+custom_minimum_size = Vector2(0, 200)
+offset_left = 90.0
+offset_top = 828.0
+offset_right = 702.0
+offset_bottom = 954.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_d0162")
 text = "Proceed To Next Round!"
 
 [node name="Shop" parent="UI" instance=ExtResource("4_2fjmb")]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -456.0
-offset_top = -456.0
-offset_right = -456.0
-offset_bottom = -456.0
+offset_left = -465.0
+offset_top = -517.0
+offset_right = -465.0
+offset_bottom = -517.0
 grow_vertical = 0
 scale = Vector2(5.64, 5.64)
 
