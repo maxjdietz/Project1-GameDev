@@ -24,6 +24,8 @@ func increase_speed(speed):
 	
 
 func take_damage():
+	AudioManager.slime_hurtw.play()
+	AudioManager.slime_hurtw.pitch_scale = randf_range(0.8, 1.2)
 	health -= 1
 
 	if health == 0:

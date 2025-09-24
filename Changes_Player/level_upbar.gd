@@ -13,6 +13,7 @@ func _process(delta):
 		level_upbar.value = 0
 		levelUp.emit()
 		levelNum += 1
+		AudioManager.level_up_w.play()
 		%Label.text = "Level " + str(levelNum)
 		
 func _ready():

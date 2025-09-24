@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 5
+var health = 3
 var slimeSpeed := 300
 signal coinSpawn(position: Vector2)
 
@@ -24,6 +24,8 @@ signal kill_for_xp
 
 func take_damage():
 	health -= 1
+	AudioManager.king_slime_ouch.play()
+	AudioManager.king_slime_ouch.pitch_scale = randf_range(0.7, 1.2)
 
 	if health == 0:
 		kill_for_xp.emit()

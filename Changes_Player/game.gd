@@ -21,14 +21,15 @@ func randNum(to, fro):
 func _ready():
 	
 	%Round.text = "Round: 1" 
-	%Money.text = "0" 
+	%Money.text = "Money: 0" 
 	roundSystem(1)
+	AudioManager.game_dev_proj_3_soundtrack.play()
 
 	
 	
 func roundSystem(round):
 	spawn_mob()
-	for i in range(4):
+	for i in range(6):
 		var randomNum = randNum(round, 15)
 		if randomNum > 10:
 			spawn_mob()
@@ -49,7 +50,6 @@ func enemyDie(position):
 	print("ACTIVATED")
 	const COIN_SCENE = preload("res://Changes_Player/coin.tscn")
 	var coin = COIN_SCENE.instantiate()
-	
 	get_parent().add_child(coin)
 	coin.coinGot.connect(setMoney)
 	coin.global_position = position
@@ -121,6 +121,8 @@ func _on_num_of_enemies_no_enemies() -> void:
 	currRound += 1
 	%Round.text = "Round: " + str(currRound)
 	print("round" + str(currRound))
+	AudioManager.upgrade_w.pitch_scale = 0.2
+	AudioManager.upgrade_w.play()
 	%ProceedButton.visible = true
 	%Shop.visible = true
 	
@@ -138,19 +140,27 @@ func _on_button_pressed() -> void:
 signal goodUpgrade(upgrade: int)
 
 func _on_ui_set_money(upgradeNum) -> void:
+	AudioManager.upgrade_w.pitch_scale = 10
 	if upgradeNum == 1:
 		if money >= 5:
 			setMoney(-5)
 			goodUpgrade.emit(1)
+		else:
+			AudioManager.upgrade_w.play()
 	elif upgradeNum == 2:
 		if money >= 10:
 			setMoney(-10)
 			goodUpgrade.emit(2)
+		else:
+			AudioManager.upgrade_w.play()
 	elif upgradeNum == 3:
 		if money >= 15:
 			setMoney(-15)
 			goodUpgrade.emit(3)
+		else:
+			AudioManager.upgrade_w.play()
 		
+	
 	
 	
 	

@@ -4,13 +4,14 @@ signal coinGot
 
 
 func _ready():
-	play_spin( )
+	play_spin()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		print("COIN")
 		coinGot.emit(2)
+		AudioManager.coin_sound_w.play()
 		queue_free()
 		
 func play_spin():

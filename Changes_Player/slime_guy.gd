@@ -10,6 +10,7 @@ signal coinSpawn(position: Vector2)
 func _ready():
 	%Slime.play_walk()
 	
+	
 func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
 	
@@ -24,6 +25,8 @@ func increase_speed(speed):
 	
 
 func take_damage():
+	AudioManager.slime_hurtw.play()
+	AudioManager.slime_hurtw.pitch_scale = randf_range(0.8, 1.2)
 	health -= 1
 
 	if health == 0:
@@ -40,5 +43,5 @@ func take_damage():
 	smoke.global_position = global_position
 	
 	
-func coinRetrieved():
-	pass
+#func coinRetrieved():
+	#pass

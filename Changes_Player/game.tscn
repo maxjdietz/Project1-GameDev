@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cy15446xfgwq5"]
+[gd_scene load_steps=16 format=3 uid="uid://cy15446xfgwq5"]
 
 [ext_resource type="Script" uid="uid://dmdx1aamkixdd" path="res://Changes_Player/game.gd" id="1_ev7e4"]
 [ext_resource type="PackedScene" uid="uid://caynm05p7b7ju" path="res://Changes_Player/player.tscn" id="1_qyihw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cvvyn5x0o0r70" path="res://Changes_Player/shop.tscn" id="4_2fjmb"]
 [ext_resource type="PackedScene" uid="uid://brc76bfutnp5e" path="res://Changes_Player/LevelUpbar.tscn" id="4_ev7e4"]
 [ext_resource type="PackedScene" uid="uid://lbjbxyg3ekj8" path="res://Changes_Player/coin.tscn" id="7_37ltu"]
+[ext_resource type="PackedScene" uid="uid://lxtjtcqq6tel" path="res://audio_manager.tscn" id="8_jde60"]
 
 [sub_resource type="GDScript" id="GDScript_ev7e4"]
 script/source = "extends CanvasLayer
@@ -32,6 +33,8 @@ func _on_shop_upgrade_pressed(numOfUpgrade: int) -> void:
 
 
 func _on_game_good_upgrade(upgrade: int) -> void:
+	AudioManager.upgrade_w.pitch_scale = 1
+	AudioManager.upgrade_w.play()
 	if upgrade == 1:
 		up1.emit()
 	elif upgrade == 2:
@@ -41,7 +44,45 @@ func _on_game_good_upgrade(upgrade: int) -> void:
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0162"]
-bg_color = Color(0.295778, 0.675093, 0.617539, 1)
+bg_color = Color(0.113824, 0.473524, 0.259728, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0.678944, 0.678944, 0.678944, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jde60"]
+bg_color = Color(0.283378, 0.691802, 0.477195, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 20
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Theme" id="Theme_jde60"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnn5g"]
+bg_color = Color(0.210507, 0.210507, 0.210507, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_beguh"]
+bg_color = Color(0.301116, 0.465381, 0.765025, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_d0162"]
 _data = {
@@ -66,71 +107,128 @@ offset_bottom = 1132.0
 layer = 2
 script = SubResource("GDScript_ev7e4")
 
-[node name="LevelUpbar" parent="UI" instance=ExtResource("4_ev7e4")]
+[node name="GameOverScreen" type="CanvasLayer" parent="UI"]
 unique_name_in_owner = true
-offset_left = 1662.0
-offset_top = 83.0
-offset_right = -59.0
-offset_bottom = -898.0
+visible = false
 
-[node name="Money" type="Label" parent="UI"]
-unique_name_in_owner = true
-offset_left = 37.0
-offset_top = 96.0
-offset_right = 392.0
-offset_bottom = 237.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "Money: 
-"
+[node name="ColorRect" type="ColorRect" parent="UI/GameOverScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.54902, 0.176471, 0.180392, 0.372549)
 
-[node name="NumOfEnemies" type="Label" parent="UI"]
-unique_name_in_owner = true
-offset_left = 665.0
-offset_top = 24.0
-offset_right = 1305.0
-offset_bottom = 107.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "Number of enemies left:"
-script = ExtResource("3_d0162")
-
-[node name="Round" type="Label" parent="UI"]
-unique_name_in_owner = true
-offset_left = 35.0
-offset_top = 30.0
-offset_right = 287.0
-offset_bottom = 113.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "Round:"
-
-[node name="ProceedButton" type="Button" parent="UI"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 200)
-offset_left = 90.0
-offset_top = 828.0
-offset_right = 702.0
-offset_bottom = 954.0
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_d0162")
-text = "Proceed To Next Round!"
+[node name="Label" type="Label" parent="UI/GameOverScreen/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -11.5
+offset_right = 48.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 196
+text = "GAME OVER!"
 
 [node name="Shop" parent="UI" instance=ExtResource("4_2fjmb")]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -465.0
-offset_top = -517.0
-offset_right = -465.0
-offset_bottom = -517.0
+offset_left = -844.0
+offset_top = -495.0
+offset_right = -844.0
+offset_bottom = -495.0
 grow_vertical = 0
-scale = Vector2(5.64, 5.64)
+scale = Vector2(5.71771, 5.71771)
+
+[node name="ProceedButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 200)
+offset_left = 103.0
+offset_top = 840.0
+offset_right = 715.0
+offset_bottom = 1040.0
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_d0162")
+text = "Proceed To Next Round!"
+
+[node name="Panel" type="Panel" parent="UI"]
+offset_left = 1624.0
+offset_top = 16.0
+offset_right = 1917.0
+offset_bottom = 158.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jde60")
+
+[node name="Panel2" type="Panel" parent="UI"]
+offset_left = 787.0
+offset_top = 21.0
+offset_right = 1241.0
+offset_bottom = 140.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jde60")
+
+[node name="Panel3" type="Panel" parent="UI"]
+offset_left = 1606.0
+offset_top = 134.0
+offset_right = 1932.0
+offset_bottom = 232.0
+theme = SubResource("Theme_jde60")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jde60")
+
+[node name="LevelUpbar" parent="UI" instance=ExtResource("4_ev7e4")]
+unique_name_in_owner = true
+offset_left = 1655.0
+offset_top = 147.0
+offset_right = -34.0
+offset_bottom = -871.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dnn5g")
+theme_override_styles/fill = SubResource("StyleBoxFlat_beguh")
+
+[node name="NumOfEnemies" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 813.0
+offset_top = 45.0
+offset_right = 1207.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.714868, 0.669018, 1)
+theme_override_font_sizes/font_size = 50
+text = "Enemies Left:"
+script = ExtResource("3_d0162")
+
+[node name="Round" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 1672.0
+offset_top = 23.0
+offset_right = 1924.0
+offset_bottom = 106.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "Round:"
+
+[node name="Money" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 1663.0
+offset_top = 68.0
+offset_right = 2018.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0, 0.942998, 0.00686499, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Money: 
+"
 
 [node name="Player" parent="." instance=ExtResource("1_qyihw")]
-position = Vector2(963, 558)
+position = Vector2(992, 717)
 
 [node name="Path2D" type="Path2D" parent="Player"]
 position = Vector2(-810, -638)
@@ -169,34 +267,6 @@ position = Vector2(1762, 521)
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="GameOverScreen" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="GameOverScreen"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.54902, 0.176471, 0.180392, 0.372549)
-
-[node name="Label" type="Label" parent="GameOverScreen/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.5
-offset_top = -11.5
-offset_right = 48.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 196
-text = "GAME OVER!"
-
 [node name="Label" type="Label" parent="."]
 visible = false
 offset_left = 746.0
@@ -210,6 +280,8 @@ text = "Level Up!"
 [node name="Coin" parent="." instance=ExtResource("7_37ltu")]
 visible = false
 
+[node name="AudioManager" parent="." instance=ExtResource("8_jde60")]
+
 [connection signal="goodUpgrade" from="." to="UI" method="_on_game_good_upgrade"]
 [connection signal="levelUpText" from="." to="Player" method="textpopup"]
 [connection signal="nextRound" from="." to="UI/NumOfEnemies" method="_on_game_next_round"]
@@ -217,11 +289,11 @@ visible = false
 [connection signal="up1" from="UI" to="Player" method="_on_ui_up_1"]
 [connection signal="up2" from="UI" to="Player" method="_on_ui_up_2"]
 [connection signal="up3" from="UI" to="Player" method="_on_ui_up_3"]
+[connection signal="upgrade_pressed" from="UI/Shop" to="UI" method="_on_shop_upgrade_pressed"]
+[connection signal="pressed" from="UI/ProceedButton" to="." method="_on_button_pressed"]
 [connection signal="levelUp" from="UI/LevelUpbar" to="." method="_on_level_upbar_level_up"]
 [connection signal="levelUp" from="UI/LevelUpbar" to="Player" method="_on_level_upbar_level_up"]
 [connection signal="noEnemies" from="UI/NumOfEnemies" to="." method="_on_num_of_enemies_no_enemies"]
-[connection signal="pressed" from="UI/ProceedButton" to="." method="_on_button_pressed"]
-[connection signal="upgrade_pressed" from="UI/Shop" to="UI" method="_on_shop_upgrade_pressed"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="coinGot" from="Coin" to="UI" method="_on_coin_coin_got"]

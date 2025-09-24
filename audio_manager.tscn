@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://lxtjtcqq6tel"]
+
+[ext_resource type="Script" uid="uid://be2mkbwkwc40" path="res://audio_manager.gd" id="1_jisk1"]
+[ext_resource type="AudioStream" uid="uid://d1p33i21nc3t2" path="res://GameDev4-FX/coinSoundW.mp3" id="2_bq1v2"]
+[ext_resource type="AudioStream" uid="uid://d0ifannk7uw2k" path="res://GameDev4-FX/ShootW.mp3" id="3_6jj5d"]
+[ext_resource type="AudioStream" uid="uid://drd4ejxjhuwtv" path="res://GameDev4-FX/slimeHURTW.mp3" id="4_5olve"]
+[ext_resource type="AudioStream" uid="uid://08438rvu73p8" path="res://GameDev4-FX/KingSlimeOuch.mp3" id="5_nhx87"]
+[ext_resource type="AudioStream" uid="uid://bwmbl10mxjg6r" path="res://GameDev4-FX/levelUpW.mp3" id="6_l2k84"]
+[ext_resource type="AudioStream" uid="uid://dmgup55iw6krr" path="res://GameDev4-FX/upgradeW.mp3" id="7_l55mp"]
+[ext_resource type="AudioStream" uid="uid://oe5ofppg23tx" path="res://GameDev Proj3 Soundtrack.mp3" id="8_v0gdi"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_jisk1")
+
+[node name="CoinSoundW" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_bq1v2")
+volume_db = -5.0
+
+[node name="ShootW" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6jj5d")
+volume_db = -5.0
+pitch_scale = 1.62
+
+[node name="SlimeHurtw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5olve")
+volume_db = -5.0
+
+[node name="KingSlimeOuch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nhx87")
+volume_db = -5.0
+
+[node name="LevelUpW" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_l2k84")
+volume_db = -5.0
+
+[node name="UpgradeW" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_l55mp")
+volume_db = -5.0
+
+[node name="GameDevProj3Soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_v0gdi")
+volume_db = -5.0
