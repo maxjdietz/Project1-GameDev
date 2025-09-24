@@ -50,12 +50,22 @@ Each lvl++ increase slime speed, player speed, decrases reload time.
 - Uprades include: increase size of player, increase size of bullets, and health gain!
 
 /////------------PROJECT 3----------------/////////////
+(Now with time taken!)
+
 9/20-9/22
--Added coin flip when dropped
--Created red slimes to be smaller (will act as mines that instantly kill player)
--Created "Soundtrack" (nt yet added)
--Created Sound Effects (not yet added)
--Changed UI slightly
+- Added coin flip when dropped (15 minutes)
+- Created red slimes to be smaller because it's funny (15 minutes)
+- Created "Soundtrack" (30 minutes in ableton)
+- Created Sound Effects (10 minutes, all found on freesound)
+- Changed UI slightly (10 minutes)
+- Added Soundtrack into the game (10 minutes)
+- Added Sound Effects into game engine (10 minutes)
+
+9/23
+- Added all sound effects and soundtrack, properly (1 hr, mostly because I had to reimport as mp3 dammit!)
+- Changed entirety of UI (45 min)
+- Added title screen (15 min)
+- Various bug fixes (20 min)
 
 
 
